@@ -100,7 +100,7 @@ with open(file_to_load) as election_data:
     #Print each row in the CSV file.
     for row in file_reader:
         #Add to the total vote count.
-        total_votes += 1
+        total_votes +=1
         #Print the candidate name from each row.
         candidate_name = row[2]
         #If the candidate does not match any existing candidate...
@@ -117,7 +117,7 @@ import os
 file_to_load = os.path.join("Resources", "election_results.csv")
 #Assign a variable to save the file a path.
 file_to_save = os.path.join("analysis", "election_analysis.txt")
-#1. Initialize a total vote counter.
+#Initialize a total vote counter.
 total_votes = 0
 #Candidate Options
 candidate_options = []
@@ -136,3 +136,15 @@ with open(file_to_load) as election_data:
         candidate_options.append(candidate_name)
 #Print the candidate list.
 print(candidate_options)        
+#Print each row in the CSV file.
+for row in file_reader:
+        #Add to the total vote count.
+        total_votes += 1
+        #Print the candidate name from each row.
+        candidate_name = row[2]
+        #If the candidate does not match any existing candidate...
+        if candidate_name not in candidate_options:
+            #Add it to the list of candidates.
+            candidate_options.append(candidate_name)
+#Print the candidate list.
+print(candidate_options)
