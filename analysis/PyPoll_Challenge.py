@@ -50,7 +50,7 @@ with open(file_to_load) as election_data:
         candidate_name = row[2]
 
         # 3: Extract the county name from each row.
-        county_name = [1]
+        county_name = row[1]
 
         # If the candidate does not match any existing candidate add it to
         # the candidate list
@@ -75,10 +75,10 @@ with open(file_to_load) as election_data:
             county_list.append(county_name)
 
             # 4c: Begin tracking the county's vote count.
-            largest_county_votes = 0
+            county_votes[county_name] = 0
 
         # 5: Add a vote to that county's vote count.
-        largest_county_votes += 1
+        county_votes[county_name] += 1
 
 # Save the results to our text file.
 with open(file_to_save, "w") as txt_file:
@@ -103,7 +103,7 @@ with open(file_to_save, "w") as txt_file:
         # 6c: Calculate the percentage of votes for the county.
         county_vote_percentage = float(county_vote) / float(total_votes) * 100
         county_results = (
-            f"{county_name}: {county_vote_percentage:.1f}% ({county_votes:,})\n")
+            f"{county_name}: {county_vote_percentage:.1f}% ({county_vote:,})\n")
 
         # 6d: Print the county results to the terminal.
         print(county_results)
@@ -112,8 +112,7 @@ with open(file_to_save, "w") as txt_file:
         txt_file.write(county_results)
 
         # 6f: Write an if statement to determine the winning county and get its vote count.
-        if (county_vote > largest_county_voter_turnout) and (county_vote_percentage > largest_county_percentage
-        ): 
+        if (county_vote > largest_county_votes):
             # True
             largest_county_votes = county_vote
             largest_county_voter_turnout = county_name
@@ -125,6 +124,7 @@ with open(file_to_save, "w") as txt_file:
         f"-------------------------\n"
         f"Largest County Turnout: {largest_county_voter_turnout}\n"
         f"-------------------------\n")
+    print(winning_county_print)
 
     # 8: Save the county with the largest turnout to a text file.
     txt_file.write(winning_county_print)
@@ -139,17 +139,17 @@ with open(file_to_save, "w") as txt_file:
         candidate_results = (
             f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
-    # Print each candidate's voter count and percentage to the
-    # terminal.
-    print(candidate_results)
-    #  Save the candidate results to our text file.
-    txt_file.write(candidate_results)
+        # Print each candidate's voter count and percentage to the
+        # terminal.
+        print(candidate_results)
+        #  Save the candidate results to our text file.
+        txt_file.write(candidate_results)
 
-    # Determine winning vote count, winning percentage, and candidate.
-    if (votes > winning_count) and (vote_percentage > winning_percentage):
-        winning_count = votes
-        winning_candidate = candidate_name
-        winning_percentage = vote_percentage
+        # Determine winning vote count, winning percentage, and candidate.
+        if (votes > winning_count):
+            winning_count = votes
+            winning_candidate = candidate_name
+            winning_percentage = vote_percentage
 
     # Print the winning candidate (to terminal)
     winning_candidate_summary = (
