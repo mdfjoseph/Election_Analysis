@@ -31,6 +31,32 @@ The analysis of the election show that:
 - The winner of the election was: 
   - Diana DeGette, who received 73.8% of the vote and 272,892 votes.
   
-  ## Challenge Overview
+## Challenge Overview
+Overiew of Election Audit
+ - The election commisson requested some additional data to complete the audt:
+   - Calculate the voter turnout for each county.
+   - Calculate the percentage of votes from each county out of the total count.
+   - Determine the county with the hightest turnout.
   
-  ## Challenge Summary
+Election Audit Results
+ - Total Votes:  369,711
+ 
+ - County Votes:
+   - Jefferson:  10.5% (38,855)
+   - Denver:  82.8% (306,055)
+   - Arapahoe:  6.7% (24,801)
+  
+ - Largest County Turnout:  Denver
+
+ - Charles Casper Stockham:  23.0% (85,213)
+ - Diana DeGette:  73.8% (272,892)
+ - Raymon Anthony Doane:  3.1% (11,606)
+
+ - Winner:  Diana GeGette
+ - Winning Vote Count:  272,892
+ - Winning Percentage:  73.8%
+ 
+## Challenge Summary
+ Election-Audit Summary
+ 
+Using the Python programming language to determine the results for the election audit is an awesome tool.  If used properly it helps ensure that voting systems operate accurately and can identify and resolve discrepancies in the election process. There are also several other formulas and methods that can be used to generate even more data. If we wanted to delve deeper, we could also determine the race, age, and gender of the voters from each county. And, the informaiton can be modified by determing the county with the lowest turnout and candidate with the lowest vote count and percentage.
